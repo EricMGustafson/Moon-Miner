@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600;900&display=swap');
+
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: green;
+  background-color: #0d9263;
+  font-family: 'Exo 2', sans-serif;
+  color: #d4ce46;
 }
 
 main {
@@ -10,22 +14,55 @@ main {
 }
 
 .object-fit {
-  height: 275px;
-  width: 100%;
+  height: 50vh;
+  width: 50%;
   object-fit: cover;
-}
-
-.object-fit-upgrade {
-  height: 30px;
-  width: 100%;
-  object-fit:scale-down;
 }
 
 .bg-image {
   background-repeat: no-repeat;
   background-size: cover;
+  background-position:center;
 }
 
 .select {
   user-select: none;
+  cursor: pointer;
+}
+
+.select-pot {
+  user-select: none;
+  cursor: pointer;
+}
+
+.select-pot:hover {
+  scale: 1.2;
+}
+
+.select:hover {
+  transform: scaleY(1.2);
+}
+
+.upgrade-tile {
+  border: 2px solid  	#d4ce46;
+  border-radius: 5px;
+  box-shadow: -4px 5px 5px #d4ce46;
+  width: 100%;
+  background-color:  	#4aba91;
+}
+
+.upgrade-bg {
+  background-color: rgba(32, 30, 30, 0.759);
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+hr {
+  opacity: 1;
+  color: #d4ce46;
+  background-color: #d4ce46;
+}
+
+hr:not([size]) {
+  height: 10px;
 }
