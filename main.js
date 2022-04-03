@@ -18,15 +18,15 @@ const stealUpgrades = {
     price: 2500,
     quantity: 0,
     bonus: 1,
-    multiplier: 3,
+    multiplier: 6,
     img: './assets/lots-o-pots.jpg'
   },
   masterSword: {
     name: 'Master Sword',
-    price: 25000,
+    price: 5000,
     quantity: 0,
     bonus: 1,
-    multiplier: 5,
+    multiplier: 10,
     img: './assets/master-sword.png'
   }
 };
@@ -34,7 +34,7 @@ const stealUpgrades = {
 const passiveUpgrades = {
   rolling: {
     name: 'Rolling',
-    price: 10,
+    price: 500,
     quantity: 0,
     bonus: 1,
     multiplier: 3,
@@ -42,18 +42,18 @@ const passiveUpgrades = {
   },
   spinAttack: {
     name: 'Spin Attack',
-    price: 60000,
+    price: 10000,
     quantity: 0,
     bonus: 1,
-    multiplier: 5,
+    multiplier: 7,
     img: './assets/spin-attack.gif'
   },
   bomb: {
     name: 'Bomb',
-    price: 100000,
+    price:  20000,
     quantity: 0,
     bonus: 1,
-    multiplier: 10,
+    multiplier: 11,
     img: './assets/bomb.webp'
   }
 };
@@ -89,7 +89,7 @@ function drawPassiveCards() {
       template += `
       <div id="${upgrades}" style="background-image: url('${upgrade.img}')" class="col upgrade-tile align-items-center d-flex justify-content-between flex-column select bg-image m-3" onclick="buyPassiveUpgrade('${upgrades}')">
         <div class="w-100 d-flex justify-content-between p-2">
-          <h4 class="upgrade-bg">Current Bonus: ${upgrade.bonus}</h4>
+          <h4 class="upgrade-bg">Bonus: ${upgrade.bonus}</h4>
           <h4 class="upgrade-bg">Cost: ${upgrade.price}</h4> 
         </div>
         <div class="text-center">
@@ -103,15 +103,11 @@ function drawPassiveCards() {
 // #endregion
 
 // #region clickables
+
+
 function steal() {
   rupees += (1 + stealTotal)
   update()
-}
-
-function addAllSteals() {
-  stealTotal += stealUpgrades.stickyFingers.bonus
-  stealTotal += stealUpgrades.smashPots.bonus
-  stealTotal += stealUpgrades.masterSword.bonus
 }
 
 function buyStealUpgrade(upgrade) {
@@ -120,19 +116,21 @@ function buyStealUpgrade(upgrade) {
     stealUpgrades[upgrade].quantity++
     stealUpgrades[upgrade].bonus += (stealUpgrades[upgrade].multiplier * stealUpgrades[upgrade].bonus)
     stealUpgrades[upgrade].price += (stealUpgrades[upgrade].multiplier * 100)
+    addAllSteals(upgrade)
+    update()
+    drawStealCards()
+  } else {
+    window.alert('Not enough Rupees to purchase the ' + stealUpgrades[upgrade].name + ' upgrade.')
   }
-  addAllSteals()
-  update()
-  updateSteal(upgrade)
 }
 
+function addAllSteals(total) { 
+  let upgrade = stealUpgrades[total]
+  stealTotal += upgrade.bonus
+}
 
 function update() {
   document.getElementById('count').innerText = JSON.stringify(rupees)
-}
-
-function updateSteal(upgrade) {
-  drawStealCards()
 }
 
 // function buyStickyFingers() {
@@ -168,6 +166,8 @@ function buyPassiveUpgrade(upgrade) {
     passiveUpgrades[upgrade].quantity++
     passiveUpgrades[upgrade].bonus += (passiveUpgrades[upgrade].multiplier * passiveUpgrades[upgrade].bonus)
     passiveUpgrades[upgrade].price += (passiveUpgrades[upgrade].multiplier * 100)
+  } else {
+    window.alert('Not enough Rupees to purchase the ' + passiveUpgrades[upgrade].name + ' upgrade.')
   }
   addPassiveUpgrade()
   update()
@@ -226,4 +226,4 @@ function totalPassiveUpgrades(){
 
 drawPassiveCards()
 drawStealCards()
-setInterval(totalPassiveUpgrades, 3000);
+setInterval(update, 3000);
