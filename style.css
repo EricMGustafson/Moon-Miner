@@ -13,6 +13,17 @@ main {
   flex-grow: 1;
 }
 
+footer {
+  background-color: #494b4b;
+}
+
+.bg-main {
+  background-image: url('./assets/rupee-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
 .object-fit {
   height: 50vh;
   width: 50%;
@@ -30,6 +41,10 @@ main {
   cursor: pointer;
 }
 
+.select:hover {
+  transform: scaleY(1.2);
+}
+
 .select-pot {
   user-select: none;
   cursor: pointer;
@@ -39,11 +54,9 @@ main {
   scale: 1.2;
 }
 
-.select:hover {
-  transform: scaleY(1.2);
-}
 
 .upgrade-tile {
+  display: flex;
   border: 2px solid  	#d4ce46;
   border-radius: 5px;
   box-shadow: -4px 5px 5px #d4ce46;
@@ -63,6 +76,13 @@ hr {
   background-color: #d4ce46;
 }
 
-hr:not([size]) {
-  height: 10px;
+.vr {
+  border-right: 1px solid #d4ce46;
+  border-left: 1px solid #d4ce46;
+}
+
+.object-fit {
+  height: 100px;
+  width: 100%;
+  object-fit: scale-down;
 }
