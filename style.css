@@ -3,14 +3,10 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background-color: #0d9263;
   font-family: 'Exo 2', sans-serif;
   color: #d4ce46;
-}
-
-main {
-  flex-grow: 1;
+  height: 100vh;
 }
 
 footer {
@@ -24,10 +20,8 @@ footer {
   height: 100%;
 }
 
-.object-fit {
-  height: 50vh;
-  width: 50%;
-  object-fit: cover;
+.fs-6 {
+  font-size: 1rem;
 }
 
 .bg-image {
@@ -57,16 +51,16 @@ footer {
 
 .upgrade-tile {
   display: flex;
-  border: 2px solid  	#d4ce46;
+  border: 2px solid	#d4ce46;
   border-radius: 5px;
   box-shadow: -4px 5px 5px #d4ce46;
   width: 100%;
-  background-color:  	#4aba91;
+  background-color:	#4aba91;
 }
 
 .upgrade-bg {
   background-color: rgba(32, 30, 30, 0.759);
-  padding: 0.25rem;
+  padding: 0.10rem;
   border-radius: 5px;
 }
 
@@ -82,7 +76,7 @@ hr {
 }
 
 .object-fit {
-  height: 100px;
+  height: 65px;
   width: 100%;
-  object-fit: scale-down;
+  object-fit:cover;
 }
